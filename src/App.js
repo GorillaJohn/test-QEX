@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import style from './App.module.css';
+import nullButton from './assets/img/nullButton.svg';
+import activeButton from './assets/img/activeButton.svg';
+import smallAvatar from './assets/img/smallAvatar.png'
 
-function App() {
+const App = () => {
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={style.App}>
+      <div className={style.chat}>
+        <div className={style.header} >
+          <div className={style.avatar}>
+            <img src={smallAvatar} />
+          </div>
+          <div className={style.username}>
+            First name + Last name
+          </div>
+        </div>
+        <div className={style.main}>
+          <div className={style.messages}>
+            -Прив
+            -Чд?
+            -Нч
+            -А ты?
+          </div>
+          <div className={style.newMessage}>
+            <textarea className={style.textarea} placeholder='Enter text message...'></textarea>
+            <button className={style.button} >
+              <img src={nullButton} />
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
+
   );
 }
 
