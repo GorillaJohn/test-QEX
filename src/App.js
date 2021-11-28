@@ -6,13 +6,11 @@ import { useRef, useState } from 'react';
 
 
 const App = () => {
-
   const [messages, setMessages] = useState([]);
   const [value, setValue] = useState('');
   const socket = useRef()
   const [connected, setConnected] = useState(false);
-  const [username, setUsername] = useState('')
-
+  const [username, setUsername] = useState('');
 
   const connect = () => {
     socket.current = new WebSocket('wss://ws.qexsystems.ru')
@@ -33,15 +31,16 @@ const App = () => {
   }
 
   const sendMessage = async () => {
+    const time = new Date().toLocaleTimeString();
     const message = {
       username,
       message: value,
-      time: new Date().toLocaleTimeString(),
+      time: time.slice(0, -3),
       id: Date.now(),
       event: 'message'
     }
     socket.current.send(JSON.stringify(message));
-    messages.push(message)
+    messages.unshift(message)
     setValue('')
   }
 
@@ -52,11 +51,12 @@ const App = () => {
           <input value={username}
             onChange={e => setUsername(e.target.value)}
             placeholder='Inter your login' />
-          <button onClick={connect} >Sign In</button>
+          <button onClick={connect}>Sign In</button>
         </div>
       </div>
     )
   }
+
 
   return (
     <div className={style.App}>
@@ -66,7 +66,7 @@ const App = () => {
             <img src={smallAvatar} />
           </div>
           <div className={style.username}>
-            {username != '' ? username : 'User Name'}
+            User Name
           </div>
         </div>
         <div className={style.main}>

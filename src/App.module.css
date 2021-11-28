@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
 .App {
   max-width: 1385px;
   margin: 0 auto;
@@ -24,6 +28,8 @@
 
 .main {
   background: #181818;
+  max-height: 720px;
+  overflow: auto;
 }
 
 .messages {
@@ -95,13 +101,15 @@
 }
 
 .companion {
+  word-break: break-word;
   grid-area: companion;
-  min-height: 100px;
+  min-height: 30px;
+  min-width: 150px;
   max-width: 440px;
   background: #464646;
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.07);
   border-radius: 9px;
-  flex: none;
+  flex: 1 1 auto;
   order: 1;
   flex-grow: 0;
   margin: 15px 0px 15px 30px;
@@ -151,10 +159,13 @@
 }
 .messages {
   display: flex;
+  justify-content: center;
 }
 .you {
+  word-break: break-word;
   grid-area: you;
-  min-height: 100px;
+  min-height: 30px;
+  min-width: 150px;
   max-width: 440px;
   background: rgba(20, 255, 114, 0.7);
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.07);
@@ -167,6 +178,8 @@
   grid-template-columns: 3fr 1fr;
   grid-auto-rows: 1fr 1fr;
   grid-template-areas: "yourMessageText yourTime";
+  margin-left: auto;
+  margin-right: 40px;
 }
 
 .yourMessageText {
@@ -192,7 +205,4 @@
 
   text-align: center;
   color: #dfdfdf;
-}
-
-.container {
 }
